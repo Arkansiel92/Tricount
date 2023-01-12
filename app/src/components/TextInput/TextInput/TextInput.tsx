@@ -29,5 +29,4 @@ const TextInput = (
     </FormProvider>
   );
 };
-
 export default TextInput;
