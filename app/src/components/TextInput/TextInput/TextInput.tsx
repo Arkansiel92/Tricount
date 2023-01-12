@@ -3,6 +3,7 @@ import { FormProvider, useForm } from "react-hook-form";
 
 const TextInput = (
   name?: string | any,
+  className?: string,
   defaultValue?: string | number,
   label?: string | number | any,
   placeholder?: string,
@@ -20,6 +21,7 @@ const TextInput = (
         <input
           name={name.name}
           type={name.type}
+          className={name.className}
           placeholder={name.placeholder}
           defaultValue={name.defaultValue}
           value={value}

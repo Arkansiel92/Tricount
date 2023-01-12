@@ -2,16 +2,48 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    /**
+     * @Route("registration", name="registration")
+     */
+    public function registration(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher)
+    {
+        $user = new User;
+
+        $data = json_decode($request->getContent(), true);
+
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        $user->setEmail($data['email']);
+        $user->setPassword(
+            $userPasswordHasher->hashPassword(
+                $user,
+                $data['password']
+            )
+        );
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+        
+
+        return $this->json('ok');
+    }
+
     /**
      * @Route("api/login_check", name="api_login")
      * @return Response
