@@ -10,9 +10,16 @@
     "@types/node": "^16.18.11",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
+    "boostrap": "^2.0.0",
+    "bootstrap": "^5.2.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.5",
+<<<<<<< HEAD
+=======
+    "react-router-dom": "^6.6.2",
+>>>>>>> 2c1295f7ea4a0fa9a80f6c9d4ec224d8e3176088
     "react-scripts": "5.0.1",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
