@@ -6,11 +6,6 @@ import RegistrationScreen from './screens/RegistrationScreen/RegistrationScreen'
 import { createContext, useState } from "react";
 import LogoutScreen from './screens/logout/LogoutScreen';
 
-interface ExtentedContext {
-  token: string,
-  setToken: (newToken: string) => void
-}
-
 export const userContext = createContext<any>({
   token: '',
   setToken : () => {}
@@ -35,6 +30,7 @@ function App() {
             <Route path={'/login'} element={<LoginScreen />} />
             <Route path={'/logout'} element={<LogoutScreen />} />
             <Route path={'/registration'} element={<RegistrationScreen />} />
+            <Route path={'/beautiful'} element={<h1 className='text-center my-5'>Soit beau</h1>} />
           </Routes>
         </BrowserRouter>
       </userContext.Provider>

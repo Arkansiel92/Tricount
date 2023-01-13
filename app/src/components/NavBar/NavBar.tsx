@@ -8,7 +8,7 @@ const NavBar = () => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">Navbar</a>
+        <NavLink className='navbar-brand' to={'/'}>Tricount</NavLink>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
         </button>
@@ -22,10 +22,10 @@ const NavBar = () => {
                 token !== ''
                 ? <div className="form-inline my-2 my-lg-0">
                     <li className="nav-item active">
-                        <NavLink className='nav-link' to={'/group'}>Groupe</NavLink>
+                        <NavLink className='nav-link' to={'/group'}>Gérer les groupes</NavLink>
                     </li>
                     <li className="nav-item active">
-                        <NavLink className='nav-link' to={'/'}>Comment être beau</NavLink>
+                        <NavLink className='nav-link' to={'/beautiful'}>Comment être beau</NavLink>
                     </li>
                 </div>
                 : ''
