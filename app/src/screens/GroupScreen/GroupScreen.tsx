@@ -1,5 +1,7 @@
 export default function GroupScreen() {
     return (
-        <div></div>
+        <div>
+            
+        </div>
     )
 }
