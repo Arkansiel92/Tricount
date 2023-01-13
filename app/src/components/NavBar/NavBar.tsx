@@ -1,7 +1,10 @@
 import { useContext } from "react";
 import {NavLink} from "react-router-dom";
+import { userContext } from "../../App";
 
 const NavBar = () => {
+
+    const {token} = useContext(userContext);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -15,17 +18,30 @@ const NavBar = () => {
             <li className="nav-item active">
                 <NavLink className='nav-link' to={'/'}>Accueil</NavLink>
             </li>
-            <li className="nav-item active">
-                <NavLink className='nav-link' to={'/group'}>Groupe</NavLink>
-            </li>
-            <li className="nav-item active">
-                <NavLink className='nav-link' to={'/'}>Comment être beau</NavLink>
-            </li>
+            {
+                token !== ''
+                ? <div className="form-inline my-2 my-lg-0">
+                    <li className="nav-item active">
+                        <NavLink className='nav-link' to={'/group'}>Groupe</NavLink>
+                    </li>
+                    <li className="nav-item active">
+                        <NavLink className='nav-link' to={'/'}>Comment être beau</NavLink>
+                    </li>
+                </div>
+                : ''
+            }
             </ul>
-            <div className="form-inline my-2 my-lg-0">
-            <NavLink className='btn btn-primary' to={'/login'}>Se connecter</NavLink>
-            <NavLink className='btn btn-primary m-2 my-sm-0' to={'/registration'}>S'inscrire</NavLink>
-            </div>
+            {
+                token !== ''
+                ? <div className="form-inline my-2 my-lg-0">
+                <NavLink className='btn btn-danger' to={'/logout'}>Se déconnecter</NavLink>
+                </div>
+                : <div className="form-inline my-2 my-lg-0">
+                <NavLink className='btn btn-primary' to={'/login'}>Se connecter</NavLink>
+                <NavLink className='btn btn-primary m-2 my-sm-0' to={'/registration'}>S'inscrire</NavLink>
+                </div>
+            }
+
         </div>
         </nav>
     )

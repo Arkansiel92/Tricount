@@ -56,6 +56,7 @@ export default function LoginScreen() {
       navigate('/');
     })
     .catch((error) => {
+      console.log('erreur : ', error);
       setAlert({msg : 'Identification ou mot de passe incorrect', class: 'alert alert-danger'});
     })
   }

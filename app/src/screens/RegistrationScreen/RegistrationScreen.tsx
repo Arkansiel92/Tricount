@@ -9,7 +9,7 @@ interface props {
 
 export default function RegistrationScreen() {
 
-    const {token, updateValue} = useContext(userContext);
+    const {token} = useContext(userContext);
     const [form, setForm] = useState<props>({email : "", password : ""});
 
     const handleChange = (e: ChangeEvent) => {
