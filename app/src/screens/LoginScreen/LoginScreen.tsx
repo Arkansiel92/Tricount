@@ -1,4 +1,3 @@
-import SubmitButton from "../../components/TextInput/SubmitButton";
 import TextInput from "../../components/TextInput/TextInput";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -57,7 +56,7 @@ export default function LoginScreen() {
           label="Mot de passe"
           placeholder="Mot de passe"
         />
-        <SubmitButton name="envoyer" value="Envoyer" />
+        <input type="submit" name="envoyer" value="Envoyer" />
       </form>
     </div>
   );
