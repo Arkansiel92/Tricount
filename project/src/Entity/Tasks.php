@@ -27,6 +27,11 @@ class Tasks
      */
     private $group_ref;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $count;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Tasks
     public function setGroupRef(?Groups $group_ref): self
     {
         $this->group_ref = $group_ref;
+
+        return $this;
+    }
+
+    public function getCount(): ?int
+    {
+        return $this->count;
+    }
+
+    public function setCount(?int $count): self
+    {
+        $this->count = $count;
 
         return $this;
     }
