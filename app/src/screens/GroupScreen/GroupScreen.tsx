@@ -3,14 +3,14 @@ import TextInput from "../../components/TextInput/TextInput";
 
 interface props {
   name: string;
-  nbPerson: string;
+  nbPerson: number;
   admin: string;
 }
 
 export default function GroupScreen() {
   const [form, setForm] = useState<props>({
     name: "",
-    nbPerson: "",
+    nbPerson: 0,
     admin: "",
   });
 
@@ -45,31 +45,48 @@ export default function GroupScreen() {
   };
 
   return (
-    <div className="container my-5 form-group">
-      <h3 className="border-bottom my-3">Groupes</h3>
-      <TextInput name="name" label="Nom" type="text" className="form-control" />
-      <TextInput
-        name="nbPerson"
-        label="Nombre de personnes"
-        type="text"
-        className="form-control"
-        onChange={handleChange}
-      />
-      <div className=" form-group">
+    <div>
+      <div className="container my-5 form-group">
+        <h3 className="border-bottom my-3">Groupes</h3>
         <TextInput
-          name="admin"
-          label="Admin"
+          name="name"
+          label="Nom"
+          type="text"
+          className="form-control"
+        />
+        <TextInput
+          name="nbPerson"
+          label="Nombre de personnes"
           type="text"
           className="form-control"
           onChange={handleChange}
         />
+        <div className=" form-group">
+          <TextInput
+            name="admin"
+            label="Admin"
+            type="text"
+            className="form-control"
+            onChange={handleChange}
+          />
+        </div>
+        <input
+          className="btn btn-primary"
+          type="submit"
+          value="Valider"
+          onClick={handleSubmit}
+        />
+        {form.admin !== "" && form.name !== "" ? (
+          <div className="container mu-5 form-group">
+            <h4>
+              -{form.name}
+              <br />-{form.admin}
+            </h4>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
-      <input
-        className="btn btn-primary"
-        type="submit"
-        value="Valider"
-        onClick={handleSubmit}
-      />
     </div>
   );
 }

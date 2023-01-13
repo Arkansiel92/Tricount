@@ -6,6 +6,7 @@ import RegistrationScreen from "./screens/RegistrationScreen/RegistrationScreen"
 import { createContext, useState } from "react";
 import LogoutScreen from "./screens/logout/LogoutScreen";
 import GroupScreen from "./screens/GroupScreen";
+import TaskScreen from "./screens/TaskScreen";
 
 export const userContext = createContext<any>({
   token: "",
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path={"/"} element={<MainScreen />} />
             <Route path={"/group"} element={<GroupScreen />} />
+            <Route path={"/task"} element={<TaskScreen />} />
             <Route path={"/login"} element={<LoginScreen />} />
             <Route path={"/logout"} element={<LogoutScreen />} />
             <Route path={"/registration"} element={<RegistrationScreen />} />
