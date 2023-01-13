@@ -35,13 +35,15 @@ export default function LoginScreen() {
     console.log("envoie du fetch");
     const headers = new Headers();
 
-    headers.append('Content-Type', 'application/json');
+    headers.append("Content-Type", "application/json");
 
-    fetch('http://localhost:8741/api/login_check', {
-      method: 'POST',
+    const data = { email: "admin@admin.fr", password: "admin" };
+
+    fetch("http://localhost:8741/api/login_check", {
+      method: "POST",
       headers: headers,
-      mode: 'cors',
-      body: JSON.stringify(form)
+      mode: "cors",
+      body: JSON.stringify(data),
     })
     .then((res) => {
       if (res.ok) {
