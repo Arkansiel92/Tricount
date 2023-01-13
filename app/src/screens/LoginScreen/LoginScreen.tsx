@@ -1,16 +1,25 @@
 import SubmitButton from "../../components/TextInput/SubmitButton";
 import TextInput from "../../components/TextInput/TextInput";
-import { ChangeEvent, useState } from "react";
+import {useNavigate} from "react-router-dom";
+import { ChangeEvent, useContext, useState } from "react";
+import { userContext } from "../../App";
 
 interface props {
   email: string,
   password: string
 }
 
+interface alert {
+  msg: string,
+  class: string
+}
+
 export default function LoginScreen() {
 
+  const navigate = useNavigate();
+  const {token, updateValue} = useContext(userContext);
   const [form, setForm] = useState<props>({email : "", password : ""});
-  const [alert, setAlert] = useState<string>('');
+  const [alert, setAlert] = useState<alert>({msg: "", class: ""});
 
   const handleChange = (e: ChangeEvent) => {
       setForm(prevState => {
@@ -40,22 +49,22 @@ export default function LoginScreen() {
       }
     })
     .then((data) => {
-      console.log(data.token);
-      setAlert('Connexion réussie !');
+      setAlert({msg : 'Connexion réussie !', class: 'alert alert-success'});
+      updateValue(data.token);
+      navigate('/');
     })
     .catch((error) => {
-      setAlert('Identification ou mot de passe incorrect');
+      setAlert({msg : 'Identification ou mot de passe incorrect', class: 'alert alert-danger'});
     })
   }
 
   return (
     <div className="container my-5">
       {
-        alert !== ''
-        ? <div className="alert alert-danger">{alert}</div>
+        alert.msg !== ''
+        ? <div className={alert.class}>{alert.msg}</div>
         : ''
       }
-
       <h3 className="border-bottom my-3">Se connecter</h3>
       <div className="form-group">
           {/* <TextInput className='form-control' name='email' label='Identifiant' type='text' /> */}
