@@ -7,6 +7,8 @@ use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUser;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,7 +41,6 @@ class SecurityController extends AbstractController
 
         $entityManager->persist($user);
         $entityManager->flush();
-        
 
         return $this->json('ok');
     }
@@ -51,6 +52,15 @@ class SecurityController extends AbstractController
     public function api_login(ManagerRegistry $doctrine, UserRepository $users): Response
     {
         return $this->json($users->findAll());
+    }
+
+    /**
+     * @Route("/decodeJWT", name="decode_jwt")
+     * @return Response
+     */
+    public function decodeJWT(ManagerRegistry $doctrine, UserRepository $users): Response
+    {
+        return $this->json('coucou');
     }
 
     /**
