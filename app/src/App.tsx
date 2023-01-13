@@ -26,7 +26,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path={"/"} element={<MainScreen />} />
-            <Route path={"/groupe"} element={<GroupScreen />} />
+            <Route path={"/group"} element={<GroupScreen />} />
             <Route path={"/login"} element={<LoginScreen />} />
             <Route path={"/logout"} element={<LogoutScreen />} />
             <Route path={"/registration"} element={<RegistrationScreen />} />
