@@ -76,10 +76,10 @@ export default function TaskScreen() {
           onClick={handleSubmit}
         />
         {form.admin !== "" && form.task !== "" ? (
-          <div className="container mu-5 form-group">
+          <div className="container my-5 form-group">
             <h4>
               Prix:
-              {form.price / form.nbPerson}
+              {/* {form.price / form.nbPerson} */}
             </h4>
           </div>
         ) : (

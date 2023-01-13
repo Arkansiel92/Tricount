@@ -30,12 +30,14 @@ export default function GroupScreen() {
     });
   };
 
+  const data = { name: "Robin", nbPerson: 12, admin: "Moi" };
+
   const handleSubmit = () => {
     console.log("envoie du fetch");
 
-    const data = { name: "", nbPerson: "", admin: "" };
+    console.log(data);
 
-    fetch("http://localhost:8741/api/", {
+    fetch("http://localhost:8741/groups/add", {
       method: "POST",
       headers: headers,
       mode: "cors",
@@ -70,7 +72,7 @@ export default function GroupScreen() {
         name="nbPerson"
         label="Nombre de personnes"
         type="text"
-        className="form-control w-25"
+        className="form-control"
         onChange={handleChange}
       />
       <div className=" form-group">
@@ -88,6 +90,23 @@ export default function GroupScreen() {
         value="Valider"
         onClick={handleSubmit}
       />
+      {data.name !== "" ? (
+        <div className="container my-5 form-group">
+          <ul>
+            <li>
+              <h4>Admin: {data.admin}</h4>
+            </li>
+            <li>
+              <h4>Noms: {data.name}</h4>
+            </li>
+            <li>
+              <h4>nombre de personnes: {data.nbPerson}</h4>
+            </li>
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
