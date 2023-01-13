@@ -1,5 +1,6 @@
 import TextInput from "../../components/TextInput/TextInput";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
+import { userContext } from "../../App";
 
 interface props {
     email: string,
@@ -8,6 +9,7 @@ interface props {
 
 export default function RegistrationScreen() {
 
+    const {token} = useContext(userContext);
     const [form, setForm] = useState<props>({email : "", password : ""});
 
     const handleChange = (e: ChangeEvent) => {
@@ -19,6 +21,8 @@ export default function RegistrationScreen() {
             }
         })
     }
+
+    console.log(token);
 
     const handleSubmit = () => {
 
